@@ -2,18 +2,22 @@
 Project 1 for GA SEI
 
 
-- A clearly defined Minimum Viable Product Scope.
-  - Create user profile —> Log in page 
-  - Index - > show user profiles (portfolio + watchlist) 
-  - Update -> update positions —> add positions to portfolio/watchlist 
-  - Delete -> delete char profile -> close positions/remove securities from portfolio/watchlist 
+A clearly defined Minimum Viable Product Scope:
+  - User Authentication 
+  - Cash Balance
+  - Portfolio
+  - Watchlist
 
-- Wireframes for every page you plan on creating.
+Stretch Goals:
+  - Graphs
+  - Search
+
+Wireframes for every page you plan on creating.
   ![Login Wireframe](assets/login.png)
   ![Index Wireframe](assets/index.png)
   ![Update Wireframe](assets/update.png)
 
-- User Stories (divided into sprints).
+User Stories (divided into sprints).
   NEW USER: 
   - User comes to log in page 
     - Register new user form
@@ -38,8 +42,8 @@ Project 1 for GA SEI
       - New security will be added to watchlist 
     - Vice versa for removing shares from portfolio/watchlist
 
-- User Flow for how the user will navigate the application.
+User Flow for how the user will navigate the application.
   ![User Flow](assets/flow.jpg)
 
-- Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
+Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
   ![Database ERD](assets/db_erd.png)
