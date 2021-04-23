@@ -9,9 +9,9 @@ Project 1 for GA SEI
   - Delete -> delete char profile -> close positions/remove securities from portfolio/watchlist 
 
 - Wireframes for every page you plan on creating.
-  ![Wireframe](https://files.slack.com/files-pri/T0351JZQ0-F01V795H60M/image_from_ios.png)
-  ![Wireframe](https://files.slack.com/files-pri/T0351JZQ0-F01VAHP8Z19/image_from_ios.png)
-  ![Wireframe](https://files.slack.com/files-pri/T0351JZQ0-F01V3J4CK46/image_from_ios.png)
+  ![Login Wireframe](assets/login.png)
+  ![Index Wireframe](assets/index.png)
+  ![Update Wireframe](assets/update.png)
 
 - User Stories (divided into sprints).
   NEW USER: 
@@ -42,4 +42,4 @@ Project 1 for GA SEI
   ![User Flow](https://lh6.googleusercontent.com/HwVMsN9mkShbT-OKXx9JXxGOBEx6Ewl2NVetqsfRyb1Zdd3aLR2rlHPPGM7PGuImSCbgFeM-GF6CuVt1sIUc=w1366-h635)
 
 - Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
-  ![Database ERD](https://files.slack.com/files-pri/T0351JZQ0-F01V3QZR8F8/image_from_ios.png)
+  ![Database ERD](assets/db_erd.png)
