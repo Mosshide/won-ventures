@@ -1,0 +1,21 @@
+{
+  "name": "Won-Ventures",
+  "version": "1.0.0",
+  "description": "Project 1 for GA SEI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/wsushinsky/Won-Ventures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.5"
+  }
+}
