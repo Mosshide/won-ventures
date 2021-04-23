@@ -45,5 +45,7 @@ User Stories (divided into sprints).
 User Flow for how the user will navigate the application.
   ![User Flow](assets/flow.jpg)
 
-Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
-  ![Database ERD](assets/db_erd.png)
+- Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
+  ![Database ERD](assets/ERD.png)
+
+
