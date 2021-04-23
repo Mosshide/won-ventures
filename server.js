@@ -2,6 +2,12 @@ const express = require('express')
 const app = express(); 
 const path = require('path'); 
 const bcrypt = require('bcrypt'); 
+const methodOverride = require('method-override');
+
+app.use(express.urlencoded ({extended: true}))
+app.use(express.json())
+app.use(methodOverride('_method'))
+
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -19,15 +25,6 @@ app.set('view engine', 'ejs');
 
 
 
-// Index Route  ->  view portfolio/watchlist 
-app.get('/user', (req,res) => {
-    res.render('/user/show');  //user = db info on user based on ID 
-});
-
-// new route -> new user 
-app.get('/user/new', (req,res) => {
-    res.render('user/register')
-})
 
 
 
@@ -35,6 +32,7 @@ app.listen(3000, (req,res) => {
     console.log("Is this thing on?")
 });
 
+// index route 
 // new route 
 // show route 
 // update route 
