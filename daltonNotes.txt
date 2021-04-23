@@ -1,0 +1,18 @@
+Portfolio schema 
+-> set it to an array 
+-> reference the stock schema itself 
+-> look at blog app see how we reference articles inside author 
+Notes:
+-> On stocks have a price -> + array of previous prices 
+	-> week prices 
+	-> month prices 
+	-> hold fri for sat sun prices 
+	-> omit sat sun do array of 5 indices 
+	-> Pop off last index to next index 
+
+Features -> robin hood 
+	-> user authentication
+	-> cash balances 
+	-> portfolio holdings 
+	-> Watchlist 
+	-> Showing graphs + Search  

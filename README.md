@@ -47,3 +47,5 @@ User Flow for how the user will navigate the application.
 
 Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
   ![Database ERD](assets/db_erd.png)
+
+
