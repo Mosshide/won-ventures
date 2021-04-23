@@ -43,3 +43,5 @@ Project 1 for GA SEI
 
 - Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
   ![Database ERD](assets/db_erd.png)
+
+
