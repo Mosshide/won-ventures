@@ -39,7 +39,7 @@ Project 1 for GA SEI
     - Vice versa for removing shares from portfolio/watchlist
 
 - User Flow for how the user will navigate the application.
-  ![User Flow](https://lh6.googleusercontent.com/HwVMsN9mkShbT-OKXx9JXxGOBEx6Ewl2NVetqsfRyb1Zdd3aLR2rlHPPGM7PGuImSCbgFeM-GF6CuVt1sIUc=w1366-h635)
+  ![User Flow](assets/flow.png)
 
 - Database ERD for each resource. List the attributes you'll include in your schemas and what type of data each attribute will be.
   ![Database ERD](assets/db_erd.png)
