@@ -1,0 +1,31 @@
+:root {
+    --textColor: white;
+    --veryDark: rgb(27, 27, 27);
+    --dark: rgb(59, 59, 59);
+    --light: grey;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--textColor);
+    background-color: var(--dark);
+}
+
+body {
+    height: 100vh;
+}
+
+.large-form {
+    display: inline;
+    height: 100%;
+    width: 50%;
+    min-width: 500px;
+}
+
+.heartwarming {
+    display: inline;
+    height: 100%;
+    width: 50%;
+}

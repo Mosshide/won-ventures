@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models").user;
 
 router.get("/register", function(req, res) {
-    res.render("user/register");
+    res.render("user/register", { siteTitle: "Won Ventures | Register" });
 });
 
 router.post("/register", async function(req, res) {
@@ -20,7 +20,12 @@ router.post("/register", async function(req, res) {
             password: hash
         });
 
-        res.redirect("/login", { info: "Registration successfull! Please login.", color: green });
+        res.redirect("/login",
+        {
+            siteTitle: "Won Ventures | Login",
+            info: "Registration successfull! Please login.",
+            color: "green"
+        });
     }
     catch(err) {
         console.log(err);
@@ -28,7 +33,7 @@ router.post("/register", async function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-    res.render("user/login");
+    res.render("user/login", { siteTitle: "Won Ventures | Login" });
 });
 
 router.post("/login", async function(req, res) {
@@ -43,7 +48,12 @@ router.post("/login", async function(req, res) {
             };
         }
         else {
-            res.redirect("auth/login");
+            res.redirect("auth/login",
+            {
+                siteTitle: "Won Ventures | Login",
+                info: "Login Failed: Account does not exist.",
+                color: "red"
+            });
         }       
     }
     catch(err) {
@@ -53,10 +63,17 @@ router.post("/login", async function(req, res) {
 
 router.delete("/logout", async function(req, res) {
     await req.session.destroy();
+
+    res.redirect("auth/login",
+    {
+        siteTitle: "Won Ventures | Login",
+        info: "Account Deleted! Account does not exist.",
+        color: "red"
+    });
 });
 
-router.get("/user/:id", function(req, res) {
-    res.render("user/show");
+router.get("/user", function(req, res) {
+    res.render("user/show", { siteTitle: "Won Ventures | Account" });
 });
 
 module.exports = router;
