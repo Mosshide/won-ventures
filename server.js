@@ -14,12 +14,12 @@ app.use(express.static('public'));
 
 // Index route 
 app.get('/', (req,res) => {
-    res.render('index')
+    res.render('index');
 })
 
 // auth routes
 app.use("/", controllers.user);
 
 app.listen(3000, (req,res) => {
-    console.log("Is this thing on?")
+    console.log("Is this thing on?");
 });

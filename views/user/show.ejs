@@ -1,7 +1,16 @@
 <%- include("../partials/header.ejs"); %>
 
 <body>
-    <h1>Hello</h1>
+    <header class="user-header">
+        <h1>Your Won Ventures Account</h1>
+    </header>
+    <main class="user-main">
+        <h2>Buying Power: $0</h2><br>
+        <form action="/cash/:amount" method="post">
+            <input type="number" name="amount">
+            <input type="submit" value="Transfer">
+        </form>
+    </main>
 </body>
 
 <%- include("../partials/footer.ejs"); %>
