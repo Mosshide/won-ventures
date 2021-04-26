@@ -1,18 +1,18 @@
 <%- include("../partials/header.ejs"); %>
 
-<body>
-    <h1>Make a new comment</h1>
-    <form action="/user" method="post">
-        <section>
-            <label for="username">Enter username:</label>
-            <input type="text" placeholder="username" name="username">
-        </section>
-        <section>
-            <label for="password">Comment Text</label>
-            <input type="password" placeholder="password" name="password">
-        </section>
-        <button>submit</button>
-    </form>
+<body class="auth-grid">
+    <section class="heartwarming">
+        [ Heartwarming Image ]
+    </section>
+    <section class="login-container">
+        <h1>Won Ventures</h1>
+        <h3>Please login.</h3>
+        <form action="/comments" method="post" class="login-form">
+            <input type="text" name="username" placeholder="username" class="input-text">
+            <input type="password" name="password" placeholder="password" class="input-text">
+            <input type="submit" value="Login" class="submit-button">
+        </form>
+    </section>
 </body>
 
 <%- include("../partials/footer.ejs"); %>

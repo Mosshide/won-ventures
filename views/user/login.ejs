@@ -1,21 +1,16 @@
 <%- include("../partials/header.ejs"); %>
 
-<body>
+<body class="auth-grid">
     <section class="heartwarming">
         [ Heartwarming Image ]
     </section>
-    <section class="large-form">
-        <header>Welcome to Won Ventures</header>
-        <form action="/comments" method="post">
-            <section>
-                <label for="username">Email or username</label>
-                <input type="text" name="username">
-            </section>
-            <section>
-                <label for="password">Password</label>
-                <input type="password" name="password">
-            </section>
-            <button>submit</button>
+    <section class="login-container">
+        <h1>Won Ventures</h1>
+        <h3>Please login.</h3>
+        <form action="/comments" method="post" class="login-form">
+            <input type="text" name="username" placeholder="username" class="input-text">
+            <input type="password" name="password" placeholder="password" class="input-text">
+            <input type="submit" value="Login" class="submit-button">
         </form>
     </section>
 </body>
