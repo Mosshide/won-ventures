@@ -16,3 +16,26 @@ Features -> robin hood
 	-> portfolio holdings 
 	-> Watchlist 
 	-> Showing graphs + Search  
+
+JON TODO
+	1. Server.js 
+	2. Controller * 
+	3. Index Page * -> User Portfolio 
+	4. Buy/sell interaction with database * 
+
+Static files server require 
+
+Jon
+	-> Index = portfolio watch list 
+	-> stock collection in Database 
+		-> hard code stock values 
+	
+
+Models 
+	-> communicates with databases and determines what data should look like SCHEMA
+	-> Your data i.e arrays  
+Views
+	-> how data is displayed to user EJS 
+Controllers 
+	-> handling responses to client requests which renders the models and views 
+	-> res.render 
