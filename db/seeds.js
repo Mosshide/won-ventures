@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Stock = require('../models/stocks')
+const Portfolio = require('../models/portfolio')
 
 mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
@@ -41,3 +42,4 @@ Stock.insertMany([
         console.log("Something went wrong.")
         console.log(err);
     })
+

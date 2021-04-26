@@ -10,7 +10,8 @@ app.set('view engine', 'ejs');
 // Dependency - Models
 const models = require('./models')
 // Dependency - Controllers
-const controllers = require('./controllers')
+const controllers = require('./controllers');
+const Portfolio = require('./models/portfolio');
 
 // connect mongoose -> !TODO replace with cluster 
 mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -37,9 +38,10 @@ app.get('/', (req,res) => {
 })
 
 // // Index Route
-// app.get('/user', (req,res) => {
-//     res.render('/user/index')
-// })
+app.get('/myaccount', async (req,res) => {
+    const myPortfolio = await Portfolio.find({});
+    res.render('/myaccount/index')
+})
 
 // Create 
 
