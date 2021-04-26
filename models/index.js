@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true
     })
 
 module.exports = {
-    stocks: require("stocks.js"),
-    user: require("user.js"),
-    portfolio: require("portfolio.js")
+    stocks: require("./stocks.js"),
+    user: require("./user.js"),
+    portfolio: require("./portfolio.js")
 }

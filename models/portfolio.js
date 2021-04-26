@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+
 const portfolioSchema = new mongoose.Schema({
     stock: [{
         name: String, 
@@ -6,3 +8,5 @@ const portfolioSchema = new mongoose.Schema({
     }],
 })
 
+const Portfolio = mongoose.model('Portfolio', portfolioSchema);
+module.exports = Portfolio; 

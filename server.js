@@ -30,15 +30,16 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 
+
 // ROOT route 
 app.get('/', (req,res) => {
     res.render('/user/login')
 })
 
-// Index Route
-app.get('/user', (req,res) => {
-    res.render('/user/index')
-})
+// // Index Route
+// app.get('/user', (req,res) => {
+//     res.render('/user/index')
+// })
 
 // Create 
 

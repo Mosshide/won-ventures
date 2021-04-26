@@ -1,4 +1,4 @@
-module.exports = {
-    stocks: require("stocks.js"),
-    user: require("user.js")
-}
+// module.exports = {
+//     stocks: require("stocks.js"),
+//     user: require("user.js")
+// }
