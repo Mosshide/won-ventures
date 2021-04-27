@@ -5,15 +5,15 @@
         <h1>Your Won Ventures Account</h1>
     </header>
     <main class="user-main">
-        <h2>Buying Power: $0</h2><br>
-        <form action="/cash/:amount" method="POST">
-            <input type="number" name="amount">
+        <h2>Buying Power: $<%= cash %></h2><br>
+        <form action="/cash" method="POST">
+            <input type="number" name="cash">
             <input type="submit" value="Transfer">
         </form>
         <form action="/logout" method="GET">
             <input type="submit" value="Logout">
         </form>
-        <form action="/logout?_method=DELETE" method="POST">
+        <form action="/user?_method=DELETE" method="POST">
             <input type="submit" value="Delete Account">
         </form>
     </main>

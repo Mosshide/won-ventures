@@ -128,7 +128,10 @@ router.get("/user", authCheck, async function(req, res) {
         const foundAccount = await User.findOne({ _id: req.session.currentUser });
 
         if (foundAccount) {
-            res.render("user/show", { siteTitle: "Won Ventures | Account" });
+            res.render("user/show", {
+                siteTitle: "Won Ventures | Account",
+                cash: foundAccount.cash
+            });
         }
         else {
             console.log("User not found! Can't show!");
@@ -139,5 +142,48 @@ router.get("/user", authCheck, async function(req, res) {
         console.log(err);
     }
 });
+
+router.delete("/user", authCheck, async function(req, res) {
+    try {
+        const found = await User.findByIdAndDelete(req.session.currentUser);
+
+        if (!found) console.log("Could not find account. No deletion!");
+
+        await req.session.destroy();
+
+        res.redirect("/login");
+    }
+    catch {
+        console.log(err);
+    }
+});
+
+router.post("/cash", authCheck, async function(req, res) {
+    try {
+        const foundAccount = await User.findOne({ _id: req.session.currentUser });
+
+        if (foundAccount) {
+            foundAccount.cash += parseInt(req.body.cash);
+            await foundAccount.save();
+
+            if (foundAccount.cash < 0){
+                foundAccount.cash = 0;
+                await foundAccount.save();
+            } 
+
+            res.render("user/show", {
+                siteTitle: "Won Ventures | Account",
+                cash: foundAccount.cash
+            });
+        }
+        else {
+            console.log("User not found! Can't manage cash!");
+            res.redirect("/login");
+        }
+    }
+    catch(err) {
+        console.log(err);
+    }
+})
 
 module.exports = router;
