@@ -5,6 +5,16 @@ const bcrypt = require("bcrypt");
 // Import my Data
 const User = require("../models").user;
 
+const authCheck = function authCheck(req, res, next){
+    if (req.session.currentUser) {
+        next();
+    }
+    else{
+        console.log("User not logged in! Redirecting!");
+        res.redirect("/login");
+    }
+}
+
 router.get("/register", function(req, res) {
     res.render("user/register",
     {
@@ -102,7 +112,7 @@ router.post("/login", async function(req, res) {
     }
 });
 
-router.delete("/logout", async function(req, res) {
+router.get("/logout", authCheck, async function(req, res) {
     try {
         await req.session.destroy();
 
@@ -114,22 +124,24 @@ router.delete("/logout", async function(req, res) {
         });
     }
     catch {
-
+        console.log(err);
     }
 });
 
-router.get("/user", function(req, res) {
+router.get("/user", authCheck, async function(req, res) {
     try {
+        const foundAccount = await User.findOne({ _id: req.session.currentUser });
 
-        res.render("user/show", { siteTitle: "Won Ventures | Account" });
+        if (foundAccount) {
+            res.render("user/show", { siteTitle: "Won Ventures | Account" });
+        }
+        else {
+            console.log("User not found! Can't show!");
+            res.redirect("/login");
+        }
     }
     catch {
-        res.redirect("/login",
-        {
-            siteTitle: "Won Ventures | Login",
-            info: "Account Deleted! Account does not exist.",
-            color: "red"
-        });
+        console.log(err);
     }
 });
 

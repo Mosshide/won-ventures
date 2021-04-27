@@ -6,9 +6,15 @@
     </header>
     <main class="user-main">
         <h2>Buying Power: $0</h2><br>
-        <form action="/cash/:amount" method="post">
+        <form action="/cash/:amount" method="POST">
             <input type="number" name="amount">
             <input type="submit" value="Transfer">
+        </form>
+        <form action="/logout" method="GET">
+            <input type="submit" value="Logout">
+        </form>
+        <form action="/logout?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Account">
         </form>
     </main>
 </body>
