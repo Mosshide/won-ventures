@@ -116,12 +116,7 @@ router.get("/logout", authCheck, async function(req, res) {
     try {
         await req.session.destroy();
 
-        res.redirect("/login",
-        {
-            siteTitle: "Won Ventures | Login",
-            info: "Logout successful!",
-            color: "red"
-        });
+        res.redirect("/login");
     }
     catch {
         console.log(err);
