@@ -1,3 +1,4 @@
+// packages required
 const express = require('express')
 const app = express(); 
 const methodOverride = require('method-override');
@@ -5,12 +6,15 @@ const session = require('express-session');
 
 const controllers = require("./controllers");
 
-app.set('view engine', 'ejs');
+// view ejs files in models 
+app.set('view engine', 'ejs')
 
-app.use(express.urlencoded ({extended: true}));
-app.use(express.json());
-app.use(methodOverride('_method'));
-app.use(express.static('public'));
+// routes - STOCKS 
+    // Index: Made a route for all available stocks 
+    app.get('/stock', async(req,res) => {
+        const stocks = await Stock.find({});
+        res.render('stock/index', {stocks})
+    })
 
 app.use(session({
     secret: "won",

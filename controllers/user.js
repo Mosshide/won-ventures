@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
@@ -187,3 +188,4 @@ router.post("/cash", authCheck, async function(req, res) {
 })
 
 module.exports = router;
+
