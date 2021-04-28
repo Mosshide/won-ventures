@@ -5,7 +5,11 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 const controllers = require("./controllers");
-const Stock = require('./models/stocks.js')
+const Stock = require('./models/stocks.js');
+
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 // view ejs files in models 
 app.set('view engine', 'ejs')
