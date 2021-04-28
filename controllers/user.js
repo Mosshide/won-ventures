@@ -6,15 +6,7 @@ const bcrypt = require("bcrypt");
 // Import my Data
 const User = require("../models").user;
 
-const authCheck = function authCheck(req, res, next){
-    if (req.session.currentUser) {
-        next();
-    }
-    else{
-        console.log("User not logged in! Redirecting!");
-        res.redirect("/login");
-    }
-}
+const authCheck = require("./authCheck.js");
 
 router.get("/register", function(req, res) {
     res.render("user/register",
