@@ -1,4 +1,4 @@
-// connect mongoose to mongoDB + test connection
+
 const mongoose = require('mongoose')
 
 
@@ -16,6 +16,5 @@ const stockSchema = new mongoose.Schema({
      },
 })
 
-// mongoose takes first param and creates a collection named Stocks. 
 const Stock = mongoose.model('Stock', stockSchema);
 module.exports = Stock;

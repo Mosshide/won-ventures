@@ -1,4 +1,5 @@
+const express = require('express')
+
 module.exports = {
-    stocks: require("stocks.js"),
-    user: require("user.js")
+    user: require("./user.js")
 }
