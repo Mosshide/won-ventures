@@ -1,0 +1,93 @@
+:root {
+    --textColor: rgb(230, 230, 230);
+    --altTextColor: rgb(168, 123, 0);
+    --veryDark: rgb(27, 27, 27);
+    --dark: rgb(59, 59, 59);
+    --light: grey;
+    --bodySize: 500px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--textColor);
+}
+
+body {
+    background-color: var(--dark);
+}
+
+.auth-grid {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.heartwarming {
+    height: 100%;
+    width: 100%;
+    background-color: var(--veryDark);
+}
+
+.auth-container {
+    height: 300px;
+    width: 300px;
+    right: 0;
+    top: 0;
+    background-color: var(--dark);
+    text-align: center;
+}
+
+.auth-form {
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+}
+
+input {
+    background-color: var(--dark);
+}
+
+.input-text {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.submit-button {
+    padding: 10px;
+    margin-top: 50px;
+}
+
+h1 {
+    margin: 20px;
+}
+
+h2 {
+    margin: 10px;
+}
+
+.user-header {
+    width: var(--bodySize);
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--veryDark);
+}
+
+.user-main {
+    width: var(--bodySize);
+    margin: 10px auto;
+    text-align: center;
+    background-color: var(--veryDark);
+    padding: 20px;
+}
+
+a {
+    color: var(--altTextColor);
+    text-decoration: none;
+}

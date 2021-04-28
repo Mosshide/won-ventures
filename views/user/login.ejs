@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Comments</title>
-</head>
-<body>
-    <section>
-        <a href=" "></a>
+<%- include("../partials/header.ejs"); %>
+
+<body class="auth-grid">
+    <section class="heartwarming">
+        [ Heartwarming Image ]
     </section>
-    <section>
-        <header>Welcome to Won Ventures</header>
-        <form action="/comments" method="post">
-            <section>
-                <label for="username">Email or username</label>
-                <input type="text" name="username">
-            </section>
-            <section>
-                <label for="password">Password</label>
-                <input type="password" name="password">
-            </section>
-            <button>submit</button>
+    <section class="auth-container">
+        <h1>Won Ventures</h1>
+        <h3>Login to Your Account</h3>
+        <form action="/login" method="POST" class="auth-form">
+            <input type="text" name="username" placeholder="username" class="input-text">
+            <input type="password" name="password" placeholder="password" class="input-text">
+            <input type="submit" value="Login" class="submit-button">
+            <p style="color: <%= color %>;">
+                <%= info %>
+            </p>
         </form>
+        Need an account? <a href="/register">Sign Up Here</a>
     </section>
 </body>
-</html>
+
+<%- include("../partials/footer.ejs"); %>
