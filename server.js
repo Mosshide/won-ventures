@@ -35,13 +35,6 @@ app.get("/", async (req,res) => {
     else res.redirect("/login");
 })
 
-
-
-
-
-
-
-
 // routes - STOCKS 
     // Index: Made a route for all available stocks 
     app.get('/stock', async(req,res) => { 
@@ -58,14 +51,6 @@ app.get("/", async (req,res) => {
         const stocks = await Stock.findById(req.params.id)
         res.render('stock/show', {stocks})
     })
-
-    // Edit: route for buying/selling !STUCK
-    // buy/sell
-    app.post('/stock/:id/edit', async(req,res) =>{
-        res.render('stock/edit')
-    })
-    // app.use('/stocks', controllers.stock);
-
 // auth routes
 app.use("/", controllers.user);
 
