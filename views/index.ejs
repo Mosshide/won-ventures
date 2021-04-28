@@ -10,9 +10,9 @@
 <body>
     <h1>Good Morning: <%=userInfo.username%>!</h1>
     <ul class ="navbar">
-        <li><a href="account">Cash</a></li>
+        <li><a href="user">Cash</a></li>
         <li><a href="portfolio">Portfolio</a></li>
-        <li><a href="account">Account</a></li>
+        <li><a href="user">Account</a></li>
     </ul>
     <section class="chart">
         <img src="assets/123.png">
@@ -23,19 +23,17 @@
     </section>
     <!-- show cash balance -->
     <section class="cashBalance">
-
+    Current Balance: <%=userInfo.cash%>
     </section>
-    <!-- show top 3 movers -->
-    <section class="dailyMovers">
-
     </section>
     <!-- show positions held -->
     <section class="positions">
-
+        Portfolio Holdings:<%=userInfo.stocks%>
+        <button><a href="/stocks"Add Stock</button>
     </section>
     <!-- show positions interested in -->
     <section class="watchlist">
-
+        Watchlist:<%=userInfo.watchlist%>
     </section>
 </body>
 </html>

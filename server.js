@@ -34,9 +34,17 @@ app.get("/", async (req,res) => {
     if (req.session.currentUser) res.render("index", {userInfo});
     else res.redirect("/login");
 })
+
+
+
+
+
+
+
+
 // routes - STOCKS 
     // Index: Made a route for all available stocks 
-    app.get('/stock', async(req,res) => {
+    app.get('/stock', async(req,res) => { 
         const stocks = await Stock.find({});
         res.render('stock/index', {stocks})
     })
@@ -61,9 +69,6 @@ app.get("/", async (req,res) => {
 // auth routes
 app.use("/", controllers.user);
 
-app.get('/account', (req,res) => {
-    res.render('./user/show')
-})
 
 app.listen(3000, (req,res) => {
     console.log("Is this thing on?");
