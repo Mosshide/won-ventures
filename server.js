@@ -6,6 +6,7 @@ const session = require('express-session');
 
 const controllers = require("./controllers");
 const Stock = require('./models/stocks.js');
+const user = require('./models/user.js')
 
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
@@ -28,8 +29,9 @@ app.use(session({
 }));
 
 // Index route 
-app.get("/", (req,res) => {
-    if (req.session.currentUser) res.render("index");
+app.get("/", async (req,res) => {
+    const userInfo = await user.findById(req.session.currentUser);
+    if (req.session.currentUser) res.render("index", {userInfo});
     else res.redirect("/login");
 })
 // routes - STOCKS 
@@ -54,10 +56,14 @@ app.get("/", (req,res) => {
     app.post('/stock/:id/edit', async(req,res) =>{
         res.render('stock/edit')
     })
-
+    // app.use('/stocks', controllers.stock);
 
 // auth routes
 app.use("/", controllers.user);
+
+app.get('/account', (req,res) => {
+    res.render('./user/show')
+})
 
 app.listen(3000, (req,res) => {
     console.log("Is this thing on?");

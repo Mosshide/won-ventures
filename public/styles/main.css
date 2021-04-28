@@ -91,3 +91,10 @@ a {
     color: var(--altTextColor);
     text-decoration: none;
 }
+
+.navbar {
+    list-style-type: none;
+    margin: 10 px;
+    padding: 12;
+    display: flex;
+  }

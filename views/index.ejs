@@ -5,19 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Good Morning: <%=user.name%>!</h1>
-    <section class="navbar">
-        <!-- cash is where you can add/withdraw money -->
-        <a href="cashbalancetowithdraw/deposit">Cash</a>
-        <!-- portfolio is home page -->
-        <a href="portfolio">Portfolio</a>
-        <a href="account">Account</a>
-    </section>
-    <!-- Search for stocks -->
-    <section class="search">
-
+    <h1>Good Morning: <%=userInfo.username%>!</h1>
+    <ul class ="navbar">
+        <li><a href="account">Cash</a></li>
+        <li><a href="portfolio">Portfolio</a></li>
+        <li><a href="account">Account</a></li>
+    </ul>
+    <section class="chart">
+        <img src="assets/123.png">
     </section>
     <!-- view portfolio holding performance -->
     <section class="chart">
@@ -41,3 +39,5 @@
     </section>
 </body>
 </html>
+
+
