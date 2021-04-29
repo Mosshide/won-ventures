@@ -1,0 +1,38 @@
+<%- include("../partials/header.ejs"); %>
+
+<body>
+    <header class="user-header">
+        <h1>Your Won Ventures Account</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="user-main">
+        <section class="user-section">
+            <h2>Buying Power: $<%= cash %></h2>
+        </section><hr>
+        <section class="user-section">
+            <h3>Transfer Cash</h3>
+            <form action="/cash" method="POST">
+                <input type="number" name="cash">
+                <input type="submit" value="Transfer">
+            </form>
+        </section><hr>
+        <section class="user-section">
+            <h3>Logout</h3>
+            <form action="/logout" method="GET">
+                <input type="submit" value="Logout">
+            </form>
+        </section><hr>
+        <section class="user-section">
+            <h3>Delete Account</h3>
+            <form action="/user?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Account">
+            </form>
+        </section>
+    </main>
+</body>
+
+<%- include("../partials/footer.ejs"); %>

@@ -1,28 +1,64 @@
+// packages required
 const express = require('express')
 const app = express(); 
-const path = require('path'); 
-const bcrypt = require('bcrypt'); 
+const methodOverride = require('method-override');
+const session = require('express-session');
 
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => { 
-        console.log("Mongo connection open!")
+const controllers = require("./controllers");
+const Stock = require('./models/stocks.js');
+
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
+
+// view ejs files in models 
+app.set('view engine', 'ejs')
+
+// routes - STOCKS 
+    // Index: Made a route for all available stocks 
+    app.get('/stock', async(req,res) => {
+        const stocks = await Stock.find({});
+        res.render('stock/index', {stocks})
     })
-    .catch(err => {
-        console.log("Error!")
-        console.log(err)
+
+app.use(session({
+    secret: "won",
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Index route 
+app.get("/", (req,res) => {
+    if (req.session.currentUser) res.render("index");
+    else res.redirect("/login");
+})
+// routes - STOCKS 
+    // Index: Made a route for all available stocks 
+    app.get('/stock', async(req,res) => {
+        const stocks = await Stock.find({});
+        res.render('stock/index', {stocks})
     })
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+    // New: Add a new stock to portfolio 
+    app.get('/stock/new', (req,res) => {
+        res.render('stock/new')
+    })
+    // Show: route for stock by ID 
+    app.get('/stock/:id', async(req,res) => {
+        const stocks = await Stock.findById(req.params.id)
+        res.render('stock/show', {stocks})
+    })
+
+    // Edit: route for buying/selling !STUCK
+    // buy/sell
+    app.post('/stock/:id/edit', async(req,res) =>{
+        res.render('stock/edit')
+    })
 
 
-// Index Route 
-app.get('/user', async(req,res) => {
-    res.send('Index Page!')
-    // res.render('/user')
-});
+// auth routes
+app.use("/", controllers.user);
 
 app.listen(3000, (req,res) => {
-    console.log("Is this thing on?")
+    console.log("Is this thing on?");
 });
