@@ -1,4 +1,5 @@
 // packages required
+require('dotenv').config();
 const express = require('express')
 const app = express(); 
 const methodOverride = require('method-override');
@@ -22,7 +23,7 @@ app.set('view engine', 'ejs')
     })
 
 app.use(session({
-    secret: "won",
+    secret: process.env.SECRET || "won",
     resave: false,
     saveUninitialized: false
 }));
@@ -59,6 +60,6 @@ app.get("/", (req,res) => {
 // auth routes
 app.use("/", controllers.user);
 
-app.listen(3000, (req,res) => {
+app.listen(process.env.PORT || 3000, (req,res) => {
     console.log("Is this thing on?");
 });
