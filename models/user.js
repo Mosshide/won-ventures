@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Stock = require("./stocks.js");
 
 //convert schema to model
 const user = mongoose.model('users',
