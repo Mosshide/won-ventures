@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Stocks</title>
+    <title>Watchlist</title>
 </head>
 <body>
-    <h1>These are all the available stocks:</h1>
+    <h1>Watchlist</h1> 
     <ul>
-        <%for(let stock of stocks){%>
-        <li><a href="/stock/<%=stock.id%>"><%=stock.name%></a></li>
+        <%for(let i=0;i<stockArray.length;i++){%>
+            <li><%=stockArray[i].name%></li>
         <%}%>
     </ul>
+    <footer>
+        <a href="/">Go Home</a>
+    </footer>
 </body>
 </html>
+

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Good Morning: <%=userInfo.username%>!</h1>
+    <h1>Good Morning: <%=findUser.username%>!</h1>
     <ul class ="navbar">
         <li><a href="user">Cash</a></li>
         <li><a href="portfolio">Portfolio</a></li>
@@ -23,17 +23,17 @@
     </section>
     <!-- show cash balance -->
     <section class="cashBalance">
-    Current Balance: <%=userInfo.cash%>
+    Current Balance: <%=findUser.cash%>
     </section>
     </section>
     <!-- show positions held -->
     <section class="positions">
-        Portfolio Holdings:<%=userInfo.stocks%>
+        Portfolio Holdings:<%=findUser.stocks%>
        <button><a href="/stock">Add Stock</a></button>
     </section>
     <!-- show positions interested in -->
     <section class="watchlist">
-        Watchlist:<%=userInfo.watchlist%>
+        <%- include("./partials/watchlist.ejs")%>
         <button><a href="/stock">Add Stock</a></button>
     </section>
 </body>
