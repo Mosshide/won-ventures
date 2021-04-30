@@ -11,14 +11,14 @@
     <p><b>$<%=stocks.price%></b><p>
     <p><b>Category:<%=stocks.category%></b></p>
     <footer>
-        <form action="<%=stocks.id%>/portfolio" method="PUT">
+        <form action="/stock/<%=stocks.id%>/buy" method="POST">
             <div>
                 <label for="buy">Buy</label>
                 <input type="number" id="buy" name="amount" value="amount">
             </div>
             <button>Add Position</button>
         </form>
-        <form action="<%=stocks.id%>/portfolio" method="PUT">
+        <form action="/stock/<%=stocks.id%>/sell" method="POST">
             <div>
                 <label for="sell">Sell</label>.
                 <input type="number" id="sell" name="amount">

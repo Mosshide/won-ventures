@@ -28,7 +28,13 @@
     </section>
     <!-- show positions held -->
     <section class="positions">
-        Portfolio Holdings:<%=findUser.stocks%>
+        Portfolio Holdings:
+        <ul>
+        <%for(let i=0;i<portfolioArray.length;i++){%>
+        <li>Stock:<%=portfolioArray[i].name%> amount:<%=findUser.stocks[i].amount%></li>
+        <%}%>
+    </ul>
+
        <button><a href="/stock">Add Stock</a></button>
     </section>
     <!-- show positions interested in -->

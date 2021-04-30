@@ -29,20 +29,76 @@ app.get("/", authCheck, async (req,res) => {
     try{
         const findUser = await user.findById(req.session.currentUser);
         const stockArray = [];
+        const portfolioArray = [];
     
-    if(findUser){
-        for (let index = 0; index < findUser.watchlist.length; index++) {
-            const element = await Stock.findById(findUser.watchlist[index]);
-            stockArray.push(element);
+        if(findUser){
+            for (let index = 0; index < findUser.watchlist.length; index++) {
+                const element = await Stock.findById(findUser.watchlist[index]);
+                stockArray.push(element);
+            }
+            for(let index=0; index< findUser.stocks.length; index++){
+                const addStock = await Stock.findById(findUser.stocks[index].stock);
+                console.log(addStock);
+                portfolioArray.push(addStock)
+            }
+            res.render("index", {findUser:findUser, stockArray:stockArray, portfolioArray: portfolioArray});
         }
-        res.render("index", {findUser:findUser, stockArray:stockArray});
     }
-}
     catch(err){
         console.log(err);
         console.log("Didn't work")
     }
 });
+
+app.post('/stock/:id/watchlist', authCheck, async(req,res) => {
+    try {
+        const findUser = await user.findOne({_id: req.session.currentUser});
+        
+        if(findUser){
+            findUser.watchlist.push(req.params.id);
+            await findUser.save(); 
+            res.redirect('/stock/watchlist');
+        }
+        else {
+            console.log("no stock");
+            res.redirect("/");
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+
+app.post('/stock/:id/:edit', async(req,res) => { 
+    try{ 
+        const findUser = await user.findOne({_id: req.session.currentUser});
+    
+        if(findUser){
+            findUser.stocks.push({stock:req.params.id, amount: req.body.amount})
+            await findUser.save();
+            res.redirect('/');
+        }
+        else {
+            console.log("didn't work")
+            res.redirect('/')
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
+// app.post('/', authCheck, async(req,res) => {
+
+//     try{
+//         const 
+//     }
+// })
+
+
+
+
 
 // routes - STOCKS 
     // Index: Made a route for all available stocks 
@@ -72,24 +128,6 @@ app.get('/stock/watchlist', authCheck, async(req,res) => {
 });    
 
 
-app.post('/stock/:id/watchlist', authCheck, async(req,res) => {
-    try {
-        const findUser = await user.findOne({_id: req.session.currentUser});
-        
-        if(findUser){
-            findUser.watchlist.push(req.params.id);
-            await findUser.save(); 
-            res.redirect('/stock/watchlist');
-        }
-        else {
-            console.log("no stock");
-            res.redirect("/");
-        }
-    }
-    catch (err) {
-        console.log(err);
-    }
-});
 
 
     // Show: route for stock by ID - also the new route 
@@ -110,43 +148,44 @@ app.post('/stock/:id/watchlist', authCheck, async(req,res) => {
 //         stocks = user.stocks.stock
 //         amount = user.stocks.amount 
 
-app.get('/stock/portfolio', authCheck, async(req,res) => {
-    try {
-        const findUser = await user.findOne({_id: req.session.currentUser});
+// app.get('/stock/portfolio', authCheck, async(req,res) => {
+//     try {
+//         const findUser = await user.findOne({_id: req.session.currentUser});
     
-        if(findUser){
-            for (let index = 0; index < findUser.stocks.length; index++) {
-                const findStock = await Stock.findById(findUser.stocks[index]);
-                findUser.stocks.push({stock: findStock.id, amount: findStock.req.body.amount});
-            }
-            res.render('stock/portfolio', {stockArray: stockArray})
-        }    
-    }
-    catch(err){
-        console.log(err);
-        console.log("Didn't work")
-    }
-});    
+//         if(findUser){
+//             for (let index = 0; index < findUser.stocks.length; index++) {
+//                 const findStock = await Stock.findById(findUser.stocks[index]);
+//                 findUser.stocks.push({stock: findStock.id, amount: findStock.req.body.amount});
+//             }
+//             res.render('stock/portfolio', {stockArray: stockArray})
+//         }    
+//     }
+//     catch(err){
+//         console.log(err);
+//         console.log("Didn't work")
+//     }
+// });    
 
-app.put('/stock/:id/portfolio', authCheck, (async(req,res) => {
-    try{
-        const findUser = await user.findOne({_id: req.session.currentUser});
-        const findStock = await Stock.findOne(req.params.id)
+// app.put('/stock/:id/portfolio', authCheck, (async(req,res) => {
+//     try{
+//         const findUser = await user.findOne({_id: req.session.currentUser});
+//         const findStock = await Stock.findOne(req.params.id)
 
-        if(findUser){
-            if(findStock){
-                findUser.stocks.push({stock: findStock.id, amount: findStock.req.body.amount})
-            }
-            else{
-                findUser.stocks.pop({stock: findStock.id, amount: findStock.req.body.amount})
-            }
-        }
-        res.redirect('/stock/portfolio')
-    }
-    catch(err){
-        console.log(err);
-    }
-}))
+//         if(findUser){
+//             if(findStock){
+//                 findUser.stocks.push({stock: findStock.id})
+//                 if(findStockamount: findStock.req.body.amount})
+//             }
+//             else{
+//                 findUser.stocks.pop({stock: findStock.id, amount: findStock.req.body.amount})
+//             }
+//         }
+//         res.redirect('/stock/portfolio')
+//     }
+//     catch(err){
+//         console.log(err);
+//     }
+// });
 
 
 // app.post('/stock/:id/portfolio', authCheck, async(req,res) => {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Stock = require('../models/stocks')
-
+const user = require('.../models/user')
 mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log("Connection successful")
