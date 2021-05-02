@@ -22,7 +22,7 @@ body {
 .auth-grid {
     display: grid;
     height: 100vh;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr 600px;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
@@ -33,11 +33,13 @@ body {
     height: 100%;
     width: 100%;
     background-color: var(--veryDark);
+    background-image: url(../img/bird_lady.jpg);
+    background-size: cover;
 }
 
 .auth-container {
     height: 300px;
-    width: 300px;
+    width: 500px;
     right: 0;
     top: 0;
     background-color: var(--dark);
@@ -46,7 +48,7 @@ body {
 
 .auth-form {
     padding: 20px;
-    width: 300px;
+    width: 500px;
     height: 300px;
 }
 
