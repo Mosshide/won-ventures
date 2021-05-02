@@ -14,7 +14,11 @@
     <h1>Available stocks</h1><hr>
     <ul>
         <%for(let i=0; i<stocks.length;i++){%>
-        <li class ="stockItems"><a href="/stock/<%=stocks[i].id%>"><%=stocks[i].name%></a></li>
+            <a href="/stock/<%=stocks[i].id%>">
+                <li class ="stockItems">
+                    <%=stocks[i].name%>
+                </li>
+            </a>
         <%}%>
     </ul>
 </main>
