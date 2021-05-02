@@ -20,7 +20,12 @@
         <!-- show positions held -->
         <section class="positions">
             <h2>
-                <b>Portfolio Holdings</b>
+                <b>Portfolio Holdings: </b>
+                <% let total = 0 %>
+                <% for (let i = 0; i < findUser.stocks.length; i++) { %>
+                    <% total += findUser.stocks[i].amount * portfolioArray[i].price; %>
+                <% } %>
+                $<%= total.toFixed(2); %>
             </h2>
 
             <ul class="positions-list">

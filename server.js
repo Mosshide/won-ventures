@@ -43,8 +43,8 @@ app.get("/", authCheck, async (req,res) => {
             }
             res.render("index", {
                 siteTitle: "Won Ventures | Home",
-                findUser:findUser,
-                stockArray:stockArray,
+                findUser: findUser,
+                stockArray: stockArray,
                 portfolioArray: portfolioArray
             });
         }
