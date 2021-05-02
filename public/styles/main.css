@@ -98,6 +98,14 @@ a {
     text-decoration: none;
 }
 
+.navbar {
+    list-style-type: none;
+    display: flex; 
+  }
+.navitem{
+    margin-left: 10px; 
+
+}
 hr {
     border: 1px solid var(--veryDark);
     border-radius: 1px;
@@ -110,4 +118,15 @@ hr {
 .user-section input{
     margin-top: 20px;
     padding: 5px;
+}
+
+.body{
+    column-count:2;
+    column-gap:50px;
+    margin-top: 40px; 
+    column-width: 100px; 
+}
+
+.watchitems{
+    display:flex;
 }

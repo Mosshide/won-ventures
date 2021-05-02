@@ -1,0 +1,8 @@
+
+    <h1>Watchlist</h1> 
+    <ul>
+        <%for(let i=0;i<stockArray.length;i++){%>
+            <li class="watchitems"><a href="/stock/<%=stockArray[i]._id%>"><%=stockArray[i].name%>: <%=stockArray[i].price%></a></li>
+        <%}%>
+    </ul>
+

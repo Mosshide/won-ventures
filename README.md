@@ -8,6 +8,10 @@ A clearly defined Minimum Viable Product Scope:
   - Portfolio
   - Watchlist
 
+Design/Flow Improvements:
+  - Dark Mode Default
+  - No Red Graph Greeting You First Thing When You Wake up
+
 Stretch Goals:
   - Graphs
   - Search
