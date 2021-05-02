@@ -31,6 +31,7 @@ app.get("/", authCheck, async (req,res) => {
         const findUser = await user.findById(req.session.currentUser);
         const stockArray = [];
         const portfolioArray = [];
+        const foundStock = await Stock.findById(req.params.id);
         if(findUser){
             for (let index = 0; index < findUser.watchlist.length; index++) {
                 const element = await Stock.findById(findUser.watchlist[index]);
@@ -40,7 +41,12 @@ app.get("/", authCheck, async (req,res) => {
                 const addStock = await Stock.findById(findUser.stocks[index].stock);
                 portfolioArray.push(addStock)
             }
-            res.render("index", {findUser:findUser, stockArray:stockArray, portfolioArray: portfolioArray});
+            res.render("index", {
+                siteTitle: "Won Ventures | Home",
+                findUser:findUser,
+                stockArray:stockArray,
+                portfolioArray: portfolioArray
+            });
         }
     }
     catch(err){
@@ -72,16 +78,19 @@ app.post('/stock/:id/watchlist', authCheck, async(req,res) => {
 app.post('/stock/:id/buy', async(req,res) => { 
     try{ 
         const findUser = await user.findOne({_id: req.session.currentUser});
-        
+        const foundStock = await Stock.findById(req.params.id);
+
         if(findUser){
             for(i=0;i<findUser.stocks.length;i++){
-                if((findUser.stocks[i].stock).equals(req.params.id)){
+                if(findUser.stocks[i].stock.equals(req.params.id)){
                     findUser.stocks[i].amount += parseInt(req.body.amount);
+                    findUser.cash -= parseInt(req.body.amount)*foundStock.price;
                     await findUser.save();
                     return res.redirect('/')
                 }
             } 
             findUser.stocks.push({stock:req.params.id, amount: req.body.amount})
+            findUser.cash -= parseInt(req.body.amount)*foundStock.price;
             await findUser.save();
             res.redirect('/');
         }
@@ -94,6 +103,7 @@ app.post('/stock/:id/buy', async(req,res) => {
         console.log(err);
     }
 })
+
 // OG SELL 
 app.post('/stock/:id/sell', async(req,res) => { 
     try{ 
@@ -102,8 +112,9 @@ app.post('/stock/:id/sell', async(req,res) => {
         
         if(findUser){
             for(i=0;i<findUser.stocks.length;i++){
-                if((findUser.stocks[i].stock).equals(req.params.id)){
-                    findUser.stocks[i].amount -= parseInt(req.body.amount)
+                if(findUser.stocks[i].stock.equals(req.params.id)){
+                    findUser.stocks[i].amount -= parseInt(req.body.amount);
+                    findUser.cash += parseInt(req.body.amount)*foundStock.price;
                     await findUser.save();
                 }
             }
@@ -118,36 +129,6 @@ app.post('/stock/:id/sell', async(req,res) => {
         console.log(err);
     }
 })
-
-// SELL EDITED 
-// app.post('/stock/:id/sell', async(req,res) => { 
-//     try{ 
-//         const findUser = await user.findOne({_id: req.session.currentUser});
-//         // const foundStock = await Stock.findById(req.params.id);
-        
-//         if(findUser){
-//             for(i=0;i<findUser.stocks.length;i++){
-//                 if(findUser.stocks[i].stock.equals(req.params.id) && findUser.stocks[i].stock - parseInt(req.body.amount) > 0){
-//                     findUser.stocks[i].amount -= parseInt(req.body.amount)
-//                     await findUser.save();
-//                 }
-//             }
-//             res.redirect('/')
-//         }
-//         else {
-//             console.log("didn't work")
-//             res.redirect('/')
-//         }
-//     }
-//     catch(err){
-//         console.log(err);
-//     }
-// })
-
-
-
-
-
 
 // routes - STOCKS 
     // Index: Made a route for all available stocks 
@@ -183,7 +164,7 @@ app.get('/stock/watchlist', authCheck, async(req,res) => {
     app.get('/stock/:id', async(req,res) => {
         const stocks = await Stock.findById(req.params.id)
         const findUser = await user.findOne({_id: req.session.currentUser});
-        res.render('stock/show', {stocks, findUser})
+        res.render('stock/show', {stocks:stocks, findUser:findUser})
     })
 
 
@@ -196,4 +177,3 @@ app.use("/", controllers.user);
 app.listen(process.env.PORT || 3000, (req,res) => {
     console.log("Is this thing on?");
 });
-

@@ -75,7 +75,7 @@ h2 {
     margin: 10px;
 }
 
-.user-header {
+.generic-header {
     width: var(--bodySize);
     margin: 0 auto;
     padding: 20px;
@@ -84,7 +84,16 @@ h2 {
     box-shadow: 5px 5px 10px black;
 }
 
-.user-main {
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline;
+    margin: 10px;
+}
+
+.generic-main {
     width: var(--bodySize);
     margin: 10px auto;
     text-align: center;
@@ -93,40 +102,35 @@ h2 {
     box-shadow: 5px 5px 10px black;
 }
 
+.generic-main img {
+    width: 100%;
+}
+
 a {
     color: var(--altTextColor);
     text-decoration: none;
 }
 
-.navbar {
-    list-style-type: none;
-    display: flex; 
-  }
-.navitem{
-    margin-left: 10px; 
-
-}
 hr {
     border: 1px solid var(--veryDark);
     border-radius: 1px;
+    margin: 30px;
 }
 
 .user-section {
     padding: 30px;
 }
 
-.user-section input{
+.user-section input {
     margin-top: 20px;
     padding: 5px;
+    font-size: 25px;
 }
 
-.body{
-    column-count:2;
-    column-gap:50px;
-    margin-top: 40px; 
-    column-width: 100px; 
-}
-
-.watchitems{
-    display:flex;
+.positions-list li {
+    display: block;
+    border: 2px solid var(--altTextColor);
+    padding: 10px;
+    margin: 0;
+    margin-top: -2px;
 }
