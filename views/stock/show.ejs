@@ -20,10 +20,14 @@
         </form>
         <form action="/stock/<%=stocks.id%>/sell" method="POST">
             <div>
+                <%let x=0;%>
                 <%for(let i=0; i<findUser.stocks.length;i++){%>
-                <label for="sell">Sell</label>
-                <input type="number" id="sell" name="amount" max="<%=findUser.stocks[i].amount%>">
+                    <%if(findUser.stocks[i].stock.equals(stocks.id)){%>
+                        <%x = findUser.stocks[i].amount%>
+                    <%}%>
                 <%}%>
+                <label for="sell">Sell</label>
+                <input type="number" id="sell" name="amount" max="<%=x%>">
             </div>
             <button>Remove Position</button>
         </form>
@@ -37,3 +41,4 @@
 
 
 
+find the amount for a sepcific stock 
