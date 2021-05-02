@@ -98,10 +98,12 @@ a {
 
 .navbar {
     list-style-type: none;
-    margin: 10 px;
-    padding: 12;
-    display: flex;
+    display: flex; 
   }
+.navitem{
+    margin-left: 10px; 
+
+}
 hr {
     border: 1px solid var(--veryDark);
     border-radius: 1px;

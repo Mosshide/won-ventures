@@ -8,34 +8,32 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Good Morning: <%=findUser.username%>!</h1>
     <ul class ="navbar">
-        <li><a href="user">Cash</a></li>
-        <li><a href="portfolio">Portfolio</a></li>
-        <li><a href="user">Account</a></li>
+        <li class="navitem"><a href="user">Cash</a></li>
+        <li class="navitem"><a href="/">Portfolio</a></li>
+        <li class="navitem"><a href="user">Account</a></li>
     </ul>
+    <h1>Good Morning: <%=findUser.username%>!</h1>
     <section class="chart">
-        <img src="assets/123.png">
+        <img src="/Users/jonathanpark/projectOne/Won-Ventures/assets/portfolio.png" width = 30px; height = 30px;>
     </section>
     <!-- view portfolio holding performance -->
-    <section class="chart">
-
-    </section>
     <!-- show cash balance -->
     <section class="cashBalance">
     Current Balance: <%=findUser.cash%>
     </section>
-    </section>
+    <br>
     <!-- show positions held -->
     <section class="positions">
-        Portfolio Holdings:
+        <h2><b>Portfolio Holdings:</b></h2>
         <ul>
         <%for(let i=0;i<portfolioArray.length;i++){%>
+            <%if(findUser.stocks[i].amount > 0){%> 
         <li>Stock:<%=portfolioArray[i].name%> amount:<%=findUser.stocks[i].amount%></li>
         <%}%>
+        <%}%>
     </ul>
-
-       <button><a href="/stock">Add Stock</a></button>
+       <button><a href="/stock">Edit Stock</a></button>
     </section>
     <!-- show positions interested in -->
     <section class="watchlist">

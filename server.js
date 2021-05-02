@@ -30,7 +30,6 @@ app.get("/", authCheck, async (req,res) => {
         const findUser = await user.findById(req.session.currentUser);
         const stockArray = [];
         const portfolioArray = [];
-    
         if(findUser){
             for (let index = 0; index < findUser.watchlist.length; index++) {
                 const element = await Stock.findById(findUser.watchlist[index]);
@@ -40,6 +39,7 @@ app.get("/", authCheck, async (req,res) => {
                 const addStock = await Stock.findById(findUser.stocks[index].stock);
                 portfolioArray.push(addStock)
             }
+            console.log(stockArray);
             res.render("index", {findUser:findUser, stockArray:stockArray, portfolioArray: portfolioArray});
         }
     }
@@ -94,7 +94,7 @@ app.post('/stock/:id/buy', async(req,res) => {
         console.log(err);
     }
 })
-
+// OG SELL 
 app.post('/stock/:id/sell', async(req,res) => { 
     try{ 
         const findUser = await user.findOne({_id: req.session.currentUser});
@@ -103,7 +103,6 @@ app.post('/stock/:id/sell', async(req,res) => {
         if(findUser){
             for(i=0;i<findUser.stocks.length;i++){
                 if((findUser.stocks[i].stock).equals(req.params.id)){
-                    console.log(i);
                     findUser.stocks[i].amount -= parseInt(req.body.amount)
                     await findUser.save();
                 }
@@ -120,12 +119,30 @@ app.post('/stock/:id/sell', async(req,res) => {
     }
 })
 
-// if(findUser){
-//     (findUser.stocks.stock === foundStock && findUser.stocks.amount > req.body.amount){
-//         findUser.stocks
+// SELL EDITED 
+// app.post('/stock/:id/sell', async(req,res) => { 
+//     try{ 
+//         const findUser = await user.findOne({_id: req.session.currentUser});
+//         // const foundStock = await Stock.findById(req.params.id);
+        
+//         if(findUser){
+//             for(i=0;i<findUser.stocks.length;i++){
+//                 if(findUser.stocks[i].stock.equals(req.params.id) && findUser.stocks[i].stock - parseInt(req.body.amount) > 0){
+//                     findUser.stocks[i].amount -= parseInt(req.body.amount)
+//                     await findUser.save();
+//                 }
+//             }
+//             res.redirect('/')
+//         }
+//         else {
+//             console.log("didn't work")
+//             res.redirect('/')
+//         }
 //     }
-// }
-// }
+//     catch(err){
+//         console.log(err);
+//     }
+// })
 
 
 
