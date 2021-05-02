@@ -30,8 +30,8 @@
         <ul>
         <%for(let i=0;i<portfolioArray.length;i++){%>
             <%if(findUser.stocks[i].amount > 0){%> 
-        <li><%=portfolioArray[i].name%> - <%=findUser.stocks[i].amount%></li>
-        <%}%>
+                <li><%=portfolioArray[i].name%> - <%=findUser.stocks[i].amount%></li>
+            <%}%>
         <%}%>
     </ul>
        <button><a href="/stock">Edit Stock</a></button>

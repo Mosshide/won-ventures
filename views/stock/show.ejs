@@ -21,8 +21,8 @@
         <form action="/stock/<%=stocks.id%>/sell" method="POST">
             <div>
                 <%for(let i=0; i<findUser.stocks.length;i++){%>
-                <label for="sell">Sell</label>
-                <input type="number" id="sell" name="amount" max="<%=findUser.stocks[i].amount%>">
+                    <label for="sell">Sell</label>
+                    <input type="number" id="sell" name="amount" max="<%=findUser.stocks[i].amount%>">
                 <%}%>
             </div>
             <button>Remove Position</button>
@@ -34,6 +34,3 @@
     </footer>
 </body>
 </html>
-
-
-
