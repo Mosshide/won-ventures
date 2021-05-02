@@ -1,16 +1,23 @@
+require("dotenv").config({ path: "../.env" });
 const mongoose = require('mongoose');
 const Stock = require('../models/stocks')
-const Portfolio = require('../models/portfolio')
+const user = require('../models/user')
 
-mongoose.connect('mongodb://localhost:27017/wonVentures', {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => {
-        console.log("Connection successful")
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/wonVentures',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => { 
+        console.log("Mongo connection open!")
     })
     .catch(err => {
-        console.log('failure')
+        console.log("Error!")
         console.log(err)
-    })
+    });
+
 // Inserted 20 stocks into stocks collection in wonVentures DB 
+
 Stock.insertMany([
     {name: 'AMD', price: 82.04, category: 'Technology'},
     {name: 'MU', price: 85.14, category: 'Technology'},
@@ -42,4 +49,3 @@ Stock.insertMany([
         console.log("Something went wrong.")
         console.log(err);
     })
-
