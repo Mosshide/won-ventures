@@ -40,7 +40,12 @@ app.get("/", authCheck, async (req,res) => {
                 const addStock = await Stock.findById(findUser.stocks[index].stock);
                 portfolioArray.push(addStock)
             }
-            res.render("index", {findUser:findUser, stockArray:stockArray, portfolioArray: portfolioArray});
+            res.render("index", {
+                siteTitle: "Won Ventures | Home",
+                findUser:findUser,
+                stockArray:stockArray,
+                portfolioArray: portfolioArray
+            });
         }
     }
     catch(err){
