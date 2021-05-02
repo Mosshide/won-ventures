@@ -5,39 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Good Morning: <%=user.name%>!</h1>
-    <section class="navbar">
-        <!-- cash is where you can add/withdraw money -->
-        <a href="cashbalancetowithdraw/deposit">Cash</a>
-        <!-- portfolio is home page -->
-        <a href="portfolio">Portfolio</a>
-        <a href="account">Account</a>
-    </section>
-    <!-- Search for stocks -->
-    <section class="search">
-
+    <ul class ="navbar">
+        <li class="navitem"><a href="user">Cash</a></li>
+        <li class="navitem"><a href="/">Portfolio</a></li>
+        <li class="navitem"><a href="user">Account</a></li>
+    </ul>
+    <h1>Good Morning: <%=findUser.username%>!</h1>
+    <section class="chart">
+        <img src="portfolio.png" width = 300px; height = 40px;>
     </section>
     <!-- view portfolio holding performance -->
-    <section class="chart">
-
-    </section>
     <!-- show cash balance -->
     <section class="cashBalance">
-
+    Current Balance: <%=findUser.cash%>
     </section>
-    <!-- show top 3 movers -->
-    <section class="dailyMovers">
-
-    </section>
+    <br>
     <!-- show positions held -->
+    <div class = "body">
     <section class="positions">
-
+        <h2><b>Portfolio Holdings</b></h2>
+        <ul>
+        <%for(let i=0;i<portfolioArray.length;i++){%>
+            <%if(findUser.stocks[i].amount > 0){%> 
+        <li><%=portfolioArray[i].name%> - <%=findUser.stocks[i].amount%></li>
+        <%}%>
+        <%}%>
+    </ul>
+       <button><a href="/stock">Edit Stock</a></button>
     </section>
     <!-- show positions interested in -->
     <section class="watchlist">
-
+        <%- include("./partials/watchlist.ejs")%>
+        <button><a href="/stock">Add Stock</a></button>
     </section>
+</div>
 </body>
 </html>
+
+
