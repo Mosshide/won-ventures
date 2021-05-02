@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Stocks</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>These are all the available stocks:</h1>
+    <%- include("../partials/header.ejs"); %>
+    
+    <main class="generic-main">
+    <h1>Available stocks</h1><hr>
     <ul>
         <%for(let i=0; i<stocks.length;i++){%>
-        <li><a href="/stock/<%=stocks[i].id%>"><%=stocks[i].name%></a></li>
+        <li class ="stockItems"><a href="/stock/<%=stocks[i].id%>"><%=stocks[i].name%></a></li>
         <%}%>
     </ul>
+</main>
 </body>
 </html>
