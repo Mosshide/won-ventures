@@ -161,7 +161,7 @@ router.post("/cash", authCheck, async function(req, res) {
             transfer = parseInt(req.body.cash);
             
             if (foundAccount.cash >= -transfer){
-                foundAccount.cash -= transfer;
+                foundAccount.cash += transfer;
                 await foundAccount.save();
 
                 res.render("user/show", {
