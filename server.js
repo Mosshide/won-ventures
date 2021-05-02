@@ -39,7 +39,6 @@ app.get("/", authCheck, async (req,res) => {
                 const addStock = await Stock.findById(findUser.stocks[index].stock);
                 portfolioArray.push(addStock)
             }
-            console.log(stockArray);
             res.render("index", {findUser:findUser, stockArray:stockArray, portfolioArray: portfolioArray});
         }
     }
@@ -182,7 +181,8 @@ app.get('/stock/watchlist', authCheck, async(req,res) => {
     // Show: route for stock by ID - also the new route 
     app.get('/stock/:id', async(req,res) => {
         const stocks = await Stock.findById(req.params.id)
-        res.render('stock/show', {stocks})
+        const findUser = await user.findOne({_id: req.session.currentUser});
+        res.render('stock/show', {stocks, findUser})
     })
 
 

@@ -15,7 +15,7 @@
     </ul>
     <h1>Good Morning: <%=findUser.username%>!</h1>
     <section class="chart">
-        <img src="/Users/jonathanpark/projectOne/Won-Ventures/assets/portfolio.png" width = 30px; height = 30px;>
+        <img src="portfolio.png" width = 300px; height = 40px;>
     </section>
     <!-- view portfolio holding performance -->
     <!-- show cash balance -->
@@ -24,12 +24,13 @@
     </section>
     <br>
     <!-- show positions held -->
+    <div class = "body">
     <section class="positions">
-        <h2><b>Portfolio Holdings:</b></h2>
+        <h2><b>Portfolio Holdings</b></h2>
         <ul>
         <%for(let i=0;i<portfolioArray.length;i++){%>
             <%if(findUser.stocks[i].amount > 0){%> 
-        <li>Stock:<%=portfolioArray[i].name%> amount:<%=findUser.stocks[i].amount%></li>
+        <li><%=portfolioArray[i].name%> - <%=findUser.stocks[i].amount%></li>
         <%}%>
         <%}%>
     </ul>
@@ -40,6 +41,7 @@
         <%- include("./partials/watchlist.ejs")%>
         <button><a href="/stock">Add Stock</a></button>
     </section>
+</div>
 </body>
 </html>
 

@@ -117,3 +117,14 @@ hr {
     margin-top: 20px;
     padding: 5px;
 }
+
+.body{
+    column-count:2;
+    column-gap:50px;
+    margin-top: 40px; 
+    column-width: 100px; 
+}
+
+.watchitems{
+    display:flex;
+}
