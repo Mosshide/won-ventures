@@ -119,36 +119,6 @@ app.post('/stock/:id/sell', async(req,res) => {
     }
 })
 
-// SELL EDITED 
-// app.post('/stock/:id/sell', async(req,res) => { 
-//     try{ 
-//         const findUser = await user.findOne({_id: req.session.currentUser});
-//         // const foundStock = await Stock.findById(req.params.id);
-        
-//         if(findUser){
-//             for(i=0;i<findUser.stocks.length;i++){
-//                 if(findUser.stocks[i].stock.equals(req.params.id) && findUser.stocks[i].stock - parseInt(req.body.amount) > 0){
-//                     findUser.stocks[i].amount -= parseInt(req.body.amount)
-//                     await findUser.save();
-//                 }
-//             }
-//             res.redirect('/')
-//         }
-//         else {
-//             console.log("didn't work")
-//             res.redirect('/')
-//         }
-//     }
-//     catch(err){
-//         console.log(err);
-//     }
-// })
-
-
-
-
-
-
 // routes - STOCKS 
     // Index: Made a route for all available stocks 
 app.get('/stock', async(req,res) => { 
