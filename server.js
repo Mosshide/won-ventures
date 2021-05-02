@@ -72,11 +72,13 @@ app.post('/stock/:id/watchlist', authCheck, async(req,res) => {
 app.post('/stock/:id/buy', async(req,res) => { 
     try{ 
         const findUser = await user.findOne({_id: req.session.currentUser});
-        
+        const foundStock = await Stock.findById(req.params.id);
+
         if(findUser){
             for(i=0;i<findUser.stocks.length;i++){
                 if((findUser.stocks[i].stock).equals(req.params.id)){
                     findUser.stocks[i].amount += parseInt(req.body.amount);
+                    findUser.cash -= parseInt(req.body.amount*foundStock.price)
                     await findUser.save();
                     return res.redirect('/')
                 }
@@ -104,6 +106,7 @@ app.post('/stock/:id/sell', async(req,res) => {
             for(i=0;i<findUser.stocks.length;i++){
                 if((findUser.stocks[i].stock).equals(req.params.id)){
                     findUser.stocks[i].amount -= parseInt(req.body.amount)
+                    findUser.cash += parseInt(req.body.amount*foundStock.price)
                     await findUser.save();
                 }
             }
