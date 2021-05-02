@@ -20,13 +20,18 @@
     <!-- view portfolio holding performance -->
     <!-- show cash balance -->
     <section class="cashBalance">
-    Current Balance: <%=findUser.cash%>
+    Current Balance: <%=findUser.cash.toFixed(2)%>
     </section>
     <br>
     <!-- show positions held -->
     <div class = "body">
     <section class="positions">
         <h2><b>Portfolio Holdings</b></h2>
+        <%z=0;%>
+        <%for(let i=0;i<portfolioArray.length;i++){%>
+            <%z += portfolioArray[i].price*findUser.stocks[i].amount%>
+            <%}%>
+        <h3>Total Value: <%=z.toFixed(2)%> </h3>
         <ul>
         <%for(let i=0;i<portfolioArray.length;i++){%>
             <%if(findUser.stocks[i].amount > 0){%> 
@@ -44,5 +49,4 @@
 </div>
 </body>
 </html>
-
 
