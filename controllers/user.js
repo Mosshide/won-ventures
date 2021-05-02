@@ -123,7 +123,9 @@ router.get("/user", authCheck, async function(req, res) {
         if (foundAccount) {
             res.render("user/show", {
                 siteTitle: "Won Ventures | Account",
-                cash: foundAccount.cash
+                cash: foundAccount.cash,
+                color: "green",
+                info: ""
             });
         }
         else {
@@ -156,18 +158,27 @@ router.post("/cash", authCheck, async function(req, res) {
         const foundAccount = await User.findOne({ _id: req.session.currentUser });
 
         if (foundAccount) {
-            foundAccount.cash += parseInt(req.body.cash);
-            await foundAccount.save();
-
-            if (foundAccount.cash < 0){
-                foundAccount.cash = 0;
+            transfer = parseInt(req.body.cash);
+            
+            if (foundAccount.cash >= -transfer){
+                foundAccount.cash -= transfer;
                 await foundAccount.save();
-            } 
 
-            res.render("user/show", {
-                siteTitle: "Won Ventures | Account",
-                cash: foundAccount.cash
-            });
+                res.render("user/show", {
+                    siteTitle: "Won Ventures | Account",
+                    cash: foundAccount.cash,
+                    color: "green",
+                    info: "Funds transferred!"
+                });
+            }
+            else {
+                res.render("user/show", {
+                    siteTitle: "Won Ventures | Account",
+                    cash: foundAccount.cash,
+                    color: "red",
+                    info: "Insufficient funds!"
+                });
+            }
         }
         else {
             console.log("User not found! Can't manage cash!");
